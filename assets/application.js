@@ -1,4 +1,5 @@
 // Put your application javascript here
+//Cart Item Counter
 function addCartIndex(){
     let addCartForm = document.querySelector('form[action="/cart/add"]');
     let formData = new FormData(addCartForm);

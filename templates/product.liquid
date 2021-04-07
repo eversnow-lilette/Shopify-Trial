@@ -27,8 +27,12 @@
   <input type="number" id="Quantity" name="quantity" value="1" min="1">
   <!--<button type="submit" name="add" id="AddToCart">Add to cart</button>-->
 
+  <!--hidden items start-->
   <input type="hidden" id="item_index" value="0">
   <input type="hidden" id="item_list" value="">
+  <!--hidden items end-->
+
+  <!--add items in the cart start-->
   {%for item in cart.items %}
     <script type="text/javascript">
       addIndex();
@@ -37,6 +41,9 @@
               {{item.final_line_price | json}});
     </script>
   {%endfor%}
+  <!--add items in the cart end-->
+
+  <!--add button start-->
   <input type="button" 
   {% unless product.variants.first.inventory_quantity > 0 %} 
       disabled="disabled" 
@@ -49,13 +56,19 @@
   {% else %}
       value="Add to cart" 
   {% endunless %}
-   id="add_to_cart" onclick="addCartIndex()">
+   id="add_to_cart" onclick="addCartIndex()" href="">
+  
+  <!--add button end-->
 </form>
 <div>{{ product.description }}</div>
 <footer>
+
+  <!--random title and modal start-->
   <div>{{settings.randomtitle}}</div>
   <script type="text/javascript">
      printConsole( {{settings.randomtitle | json}} );
      openModal({{product.variants.first.inventory_quantity}});
   </script>
+  <!--random title and modal end-->
+
 </footer>
